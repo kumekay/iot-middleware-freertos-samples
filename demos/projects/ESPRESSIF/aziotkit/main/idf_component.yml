@@ -1,0 +1,4 @@
+dependencies:
+  azure/azure-iot-kit-sensors:
+    version: "*"
+    service_url: "https://api.staging.components.espressif.tools/"
