@@ -1,0 +1,22 @@
+name: Push components to https://components.espressif.com
+on:
+  push:
+    # branches:
+    #   - main
+jobs:
+  upload_components:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+        with:
+          submodules: "recursive"
+
+      - name: Upload components to the component registry
+        uses: espressif/github-actions/upload_components@master
+        with:
+          directories: "libs/ESPRESSIF/components/azure-iot-kit-sensors"
+          name: azure-iot-kit-sensors
+          namespace: "azure"
+          api_token: ${{ secrets.IDF_COMPONENT_API_TOKEN }}
+          # TODO: use production one
+          service_url: https://api.staging.components.espressif.tools/
